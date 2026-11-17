@@ -28,39 +28,78 @@ def guardar(datos):
 
 
 def intentar_actualizar_google(datos):
-    """Intenta consultar la API de Google. Si no hay clave o falla, conserva los datos."""
+    """Consulta la API de Google y actualiza metadatos de los modelos ya conocidos.
+
+    Devuelve (datos, hubo_cambios, estado).
+    No agrega ni elimina modelos automáticamente: los modelos nuevos se informan
+    para revisarlos a mano y decidir si son gratuitos.
+    """
     if not API_KEY:
         print('No hay GOOGLE_API_KEY configurada. Se conservan los datos actuales.')
-        return datos, False
+        return datos, False, 'sin_api_key_datos_conservados'
 
-    url = 'https://generativelanguage.googleapis.com/v1beta/models'
+    url = 'https://generativelanguage.googleapis.com/v1beta/models?key=' + API_KEY
     try:
-        req = urllib.request.Request(url + '?key=' + API_KEY)
+        req = urllib.request.Request(url)
         with urllib.request.urlopen(req, timeout=30) as resp:
-            modelos = json.loads(resp.read().decode())
-        print('Se consulto la API de Google correctamente.')
-        # En el MVP no sobreescribimos automaticamente para evitar guardar formato inesperado.
-        # Aqui podrias mapear la respuesta de Google a tu estructura de datos.
-        return datos, False
+            respuesta = json.loads(resp.read().decode())
     except Exception as e:
         print(f'Error consultando Google: {e}')
-        return datos, False
+        return datos, False, 'error_actualizacion_datos_conservados'
+
+    modelos_api = {}
+    for m in respuesta.get('models', []):
+        metodos = m.get('supportedGenerationMethods', [])
+        if 'generateContent' not in metodos:
+            continue
+        nombre = m.get('name', '').replace('models/', '')
+        if nombre:
+            modelos_api[nombre] = m
+
+    proveedor = next((p for p in datos.get('proveedores', []) if p.get('id') == 'google'), None)
+    if not proveedor:
+        print('No se encontro el proveedor Google en los datos.')
+        return datos, False, 'error_actualizacion_datos_conservados'
+
+    cambios = False
+    for modelo in proveedor.get('modelos', []):
+        api = modelos_api.get(modelo.get('nombre'))
+        if not api:
+            continue
+
+        display = api.get('displayName')
+        if display and modelo.get('nombre_display') != display:
+            modelo['nombre_display'] = display
+            cambios = True
+
+        contexto = api.get('inputTokenLimit')
+        if contexto and modelo.get('contexto_tokens') != contexto:
+            modelo['contexto_tokens'] = contexto
+            cambios = True
+
+    existentes = {m.get('nombre') for m in proveedor.get('modelos', [])}
+    nuevos = sorted(set(modelos_api) - existentes)
+    if nuevos:
+        print('Modelos nuevos detectados (revisar si son gratuitos): ' + ', '.join(nuevos))
+
+    print('Se consulto la API de Google correctamente.')
+    return datos, cambios, 'exitoso'
 
 
 def main():
     datos = cargar()
     ahora = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
-    datos['ultima_actualizacion'] = ahora
-    datos['estado'] = 'exitoso' if API_KEY else 'sin_api_key_datos_conservados'
 
-    _, cambio = intentar_actualizar_google(datos)
+    datos, cambio, estado = intentar_actualizar_google(datos)
+    datos['ultima_actualizacion'] = ahora
+    datos['estado'] = estado
 
     guardar(datos)
 
     if cambio:
         print('Datos actualizados automaticamente.')
     else:
-        print('No hubo cambios automaticos. Fecha de intento registrada y datos conservados.')
+        print('No hubo cambios en los modelos. Fecha de intento registrada y datos conservados.')
 
 
 if __name__ == '__main__':

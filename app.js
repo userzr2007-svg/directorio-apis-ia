@@ -3,6 +3,7 @@ let proveedores = [];
 const ETIQUETAS_ESTADO = {
   exitoso: '✅ Actualización exitosa',
   sin_api_key_datos_conservados: '⚠️ Sin API key: datos conservados',
+  error_actualizacion_datos_conservados: '⚠️ Error de actualización: datos conservados',
   datos_iniciales: '📦 Datos iniciales'
 };
 
