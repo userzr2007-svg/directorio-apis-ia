@@ -1,5 +1,22 @@
 let proveedores = [];
 
+const ETIQUETAS_ESTADO = {
+  exitoso: '✅ Actualización exitosa',
+  sin_api_key_datos_conservados: '⚠️ Sin API key: datos conservados',
+  datos_iniciales: '📦 Datos iniciales'
+};
+
+function etiquetaEstado(estado) {
+  return ETIQUETAS_ESTADO[estado] || estado || '-';
+}
+
+function formatearFecha(iso) {
+  if (!iso) return '-';
+  const fecha = new Date(iso);
+  if (isNaN(fecha.getTime())) return iso;
+  return fecha.toLocaleString('es-ES', { dateStyle: 'medium', timeStyle: 'short' });
+}
+
 function cargarDatos() {
   const datos = window.DIRECTORIO_DATOS;
 
@@ -10,8 +27,8 @@ function cargarDatos() {
   }
 
   proveedores = datos.proveedores;
-  document.getElementById('fecha').textContent = datos.ultima_actualizacion || '-';
-  document.getElementById('estado').textContent = datos.estado || '-';
+  document.getElementById('fecha').textContent = formatearFecha(datos.ultima_actualizacion);
+  document.getElementById('estado').textContent = etiquetaEstado(datos.estado);
 
   renderizarProveedores();
 }
