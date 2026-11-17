@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Directorio de APIs de IA Gratuitas</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>🤖 Directorio de APIs de IA Gratuitas</h1>
+    <p>Modelos gratuitos por proveedor para usar mediante API</p>
+    <div class="meta" id="meta">
+      Última actualización: <span id="fecha">-</span> | Estado: <span id="estado">-</span>
+    </div>
+  </header>
+
+  <main>
+    <section id="proveedores" class="grid">
+      <!-- Aquí se inyectan las tarjetas de proveedores con JavaScript -->
+    </section>
+
+    <section id="detalle" class="detalle oculta">
+      <button class="volver" id="btn-volver">← Volver a proveedores</button>
+      <h2 id="titulo-proveedor"></h2>
+      <p id="desc-proveedor"></p>
+      <div class="tabla-container">
+        <table id="tabla-modelos">
+          <thead>
+            <tr>
+              <th>Modelo</th>
+              <th>Descripción</th>
+              <th>Contexto</th>
+              <th>Límites (gratis)</th>
+              <th>Modalidades</th>
+              <th>Documentación</th>
+            </tr>
+          </thead>
+          <tbody id="cuerpo-modelos"></tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Datos de referencia. Siempre verifica los límites oficiales antes de usar en producción.</p>
+  </footer>
+
+  <script src="data/proveedores.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
