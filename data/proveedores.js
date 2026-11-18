@@ -1,5 +1,5 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-17T08:38:16Z",
+  "ultima_actualizacion": "2026-11-18T06:51:58Z",
   "estado": "sin_api_key_datos_conservados",
   "proveedores": [
     {
