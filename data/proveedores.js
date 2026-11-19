@@ -1,6 +1,6 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-19T02:45:13Z",
-  "ultimo_intento": "2026-11-19T02:45:13Z",
+  "ultima_actualizacion": "2026-11-19T02:48:01Z",
+  "ultimo_intento": "2026-11-19T02:48:01Z",
   "estado": "parcial",
   "detalle_estado": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
