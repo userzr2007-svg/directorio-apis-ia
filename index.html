@@ -3,47 +3,69 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Directorio de modelos de IA con API gratuita o autoalojable: Google AI Studio, OpenRouter, Groq y Mistral, con límites y documentación oficial.">
+  <meta name="theme-color" content="#4f46e5">
   <title>Directorio de APIs de IA Gratuitas</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <header>
-    <h1>🤖 Directorio de APIs de IA Gratuitas</h1>
-    <p>Modelos gratuitos por proveedor para usar mediante API</p>
-    <div class="meta" id="meta">
-      Última actualización: <span id="fecha">-</span> | Estado: <span id="estado">-</span>
+  <header class="cabecera">
+    <div class="cabecera-contenido">
+      <p class="eyebrow">Actualización automática diaria</p>
+      <h1>🤖 APIs de IA Gratuitas</h1>
+      <p class="subtitulo">Modelos gratuitos o autoalojables, con sus límites reales, capacidades y enlaces a la documentación oficial.</p>
+      <div class="meta">
+        <span class="meta-chip" id="chip-fecha" title="Fecha de la última actualización correcta">🕒 <span id="fecha">-</span></span>
+        <span class="meta-chip" id="chip-estado">Estado: <span id="estado">-</span></span>
+      </div>
+      <p class="detalle-estado oculta" id="detalle-estado"></p>
     </div>
   </header>
 
   <main>
-    <section id="proveedores" class="grid">
-      <!-- Aquí se inyectan las tarjetas de proveedores con JavaScript -->
+    <section class="barra-busqueda" aria-label="Buscar y filtrar modelos">
+      <div class="buscador">
+        <span class="icono-buscar" aria-hidden="true">🔍</span>
+        <input type="search" id="buscador" placeholder="Buscar modelo, proveedor o capacidad…" autocomplete="off" aria-label="Buscar modelos">
+        <button id="limpiar-busqueda" class="limpiar oculta" type="button" aria-label="Limpiar búsqueda">✕</button>
+      </div>
+
+      <div class="filtros">
+        <div class="chips" id="filtros-acceso" role="group" aria-label="Filtrar por tipo de acceso">
+          <button class="chip activo" data-acceso="todos" type="button">Todos</button>
+          <button class="chip" data-acceso="gratis" type="button">Gratis</button>
+          <button class="chip" data-acceso="autoalojable" type="button">Autoalojable</button>
+        </div>
+        <select id="filtro-proveedor" aria-label="Filtrar por proveedor">
+          <option value="todos">Todos los proveedores</option>
+        </select>
+      </div>
+
+      <p class="resultado-conteo" id="conteo" aria-live="polite"></p>
     </section>
 
-    <section id="detalle" class="detalle oculta">
-      <button class="volver" id="btn-volver">← Volver a proveedores</button>
-      <h2 id="titulo-proveedor"></h2>
-      <p id="desc-proveedor"></p>
-      <div class="tabla-container">
-        <table id="tabla-modelos">
-          <thead>
-            <tr>
-              <th>Modelo</th>
-              <th>Descripción</th>
-              <th>Contexto</th>
-              <th>Límites (gratis)</th>
-              <th>Modalidades</th>
-              <th>Documentación</th>
-            </tr>
-          </thead>
-          <tbody id="cuerpo-modelos"></tbody>
-        </table>
-      </div>
+    <div id="proveedores"></div>
+
+    <p class="sin-resultados oculta" id="sin-resultados">
+      No se encontraron modelos con esos filtros. Prueba con otra búsqueda o cambia el tipo de acceso.
+    </p>
+
+    <section class="leyenda">
+      <h2>Cómo leer las tarjetas</h2>
+      <ul>
+        <li><strong>RPM</strong>: peticiones por minuto · <strong>RPD</strong>: peticiones por día.</li>
+        <li><strong>TPM</strong>: tokens por minuto · <strong>TPD</strong>: tokens por día.</li>
+        <li><strong>Contexto</strong>: tamaño máximo de la conversación, en tokens.</li>
+        <li><strong>Gratis</strong>: API sin costo con límites · <strong>Autoalojable</strong>: pesos abiertos; la API es de pago, pero puedes ejecutarlo por tu cuenta.</li>
+      </ul>
+      <p>Los límites gratuitos cambian con frecuencia y se aplican por proyecto u organización. Verifica siempre la documentación oficial antes de usar un modelo en producción.</p>
+      <p>Haz clic en el nombre exacto del modelo para copiarlo.</p>
     </section>
   </main>
 
   <footer>
-    <p>Datos de referencia. Siempre verifica los límites oficiales antes de usar en producción.</p>
+    <p>Datos de referencia · Actualización automática diaria con GitHub Actions.</p>
+    <p><a href="https://github.com/userzr2007-svg/directorio-apis-ia" target="_blank" rel="noopener">Ver el proyecto en GitHub ↗</a></p>
   </footer>
 
   <script src="data/proveedores.js"></script>
