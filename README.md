@@ -16,7 +16,7 @@ Aplicación web estática que muestra modelos de IA con **API gratuita** o **pes
 | Cloudflare Workers AI | Cupo gratuito de Neuronas | Datos curados (revisión manual) |
 | Cohere | Claves trial gratuitas con cuota mensual | Datos curados (revisión manual) |
 
-Actualmente el directorio reúne **7 proveedores y 52 modelos**.
+Actualmente el directorio reúne **7 proveedores y más de 50 modelos**.
 
 ## Funciones de la página
 
