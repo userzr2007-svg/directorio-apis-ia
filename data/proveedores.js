@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-17T09:00:00Z",
-  "ultimo_intento": "2026-11-17T09:00:00Z",
-  "estado": "datos_iniciales",
-  "detalle_estado": "Datos de referencia revisados manualmente.",
+  "ultima_actualizacion": "2026-11-19T02:22:57Z",
+  "ultimo_intento": "2026-11-19T02:22:57Z",
+  "estado": "parcial",
+  "detalle_estado": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 2 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -21,7 +21,13 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 20,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen", "audio", "video", "PDF"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video",
+            "PDF"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": "Solo 20 peticiones al día: pensado para pruebas, no para producción."
         },
@@ -35,7 +41,13 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 20,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen", "audio", "video", "PDF"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video",
+            "PDF"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": null
         },
@@ -49,7 +61,12 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 20,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen", "audio", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": null
         },
@@ -63,7 +80,12 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 20,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen", "audio", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": null
         },
@@ -77,7 +99,12 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 500,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen", "audio", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": null
         },
@@ -91,7 +118,12 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 500,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen", "audio", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": null
         },
@@ -105,7 +137,11 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 14400,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto", "imagen", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "video"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": "14.400 peticiones al día, pero solo 16K tokens por minuto."
         },
@@ -119,7 +155,11 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 14400,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto", "imagen", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "video"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
           "notas": "14.400 peticiones al día, pero solo 16K tokens por minuto."
         },
@@ -133,7 +173,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 10,
           "limite_tokens_dia": null,
           "contexto_tokens": null,
-          "modalidades": ["texto", "audio"],
+          "modalidades": [
+            "texto",
+            "audio"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/speech-generation",
           "notas": "Solo 10 peticiones al día en el nivel gratuito."
         },
@@ -147,7 +190,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 25,
           "limite_tokens_dia": null,
           "contexto_tokens": null,
-          "modalidades": ["audio", "texto"],
+          "modalidades": [
+            "audio",
+            "texto"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/audio",
           "notas": "25 peticiones al día; el audio de entrada cuenta para el límite de tokens."
         },
@@ -161,7 +207,11 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": null,
           "limite_tokens_dia": null,
           "contexto_tokens": null,
-          "modalidades": ["audio", "video", "texto"],
+          "modalidades": [
+            "audio",
+            "video",
+            "texto"
+          ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/live",
           "notas": "Sin límite publicado de peticiones; el límite es de 65K tokens por minuto."
         }
@@ -184,7 +234,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
           "notas": null
         },
@@ -198,7 +251,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1024000,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://openrouter.ai/baidu/ernie-5.5-flash-preview:free",
           "notas": null
         },
@@ -212,7 +267,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://openrouter.ai/thinkingmachines/inkling-2-small:free",
           "notas": null
         },
@@ -226,7 +284,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://openrouter.ai/liquid/lfm-3-1.7b:free",
           "notas": null
         },
@@ -240,7 +300,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1048576,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://openrouter.ai/particle-ai/particle-1:free",
           "notas": null
         },
@@ -254,7 +317,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://openrouter.ai/recursive/flint-v1.0:free",
           "notas": null
         },
@@ -268,7 +333,11 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1000000,
-          "modalidades": ["texto", "imagen", "video"],
+          "modalidades": [
+            "texto",
+            "imagen",
+            "video"
+          ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3.5-super-vl:free",
           "notas": null
         },
@@ -282,7 +351,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 512000,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://openrouter.ai/dots-studio/dots-3-note-preview:free",
           "notas": null
         },
@@ -296,7 +368,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1000000,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free",
           "notas": null
         },
@@ -310,7 +384,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 256000,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://openrouter.ai/cohere/north-mini-code:free",
           "notas": null
         },
@@ -324,7 +400,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 1000000,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b:free",
           "notas": null
         },
@@ -338,7 +416,12 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 256000,
-          "modalidades": ["texto", "audio", "imagen", "video"],
+          "modalidades": [
+            "texto",
+            "audio",
+            "imagen",
+            "video"
+          ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
           "notas": null
         },
@@ -352,7 +435,11 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto", "imagen", "video"],
+          "modalidades": [
+            "imagen",
+            "texto",
+            "video"
+          ],
           "documentacion": "https://openrouter.ai/google/gemma-4-26b-a4b-it:free",
           "notas": null
         },
@@ -366,7 +453,11 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto", "imagen", "video"],
+          "modalidades": [
+            "imagen",
+            "texto",
+            "video"
+          ],
           "documentacion": "https://openrouter.ai/google/gemma-4-31b-it:free",
           "notas": null
         },
@@ -380,7 +471,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 50,
           "limite_tokens_dia": null,
           "contexto_tokens": 200000,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://openrouter.ai/openrouter/free",
           "notas": "El modelo concreto puede variar en cada petición."
         }
@@ -403,7 +497,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 1000,
           "limite_tokens_dia": 200000,
           "contexto_tokens": 131072,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/models",
           "notas": null
         },
@@ -417,7 +513,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 1000,
           "limite_tokens_dia": 200000,
           "contexto_tokens": 131072,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/models",
           "notas": null
         },
@@ -431,7 +529,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 1000,
           "limite_tokens_dia": 200000,
           "contexto_tokens": 131072,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/models",
           "notas": null
         },
@@ -445,7 +545,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 2000,
           "limite_tokens_dia": null,
           "contexto_tokens": null,
-          "modalidades": ["audio", "texto"],
+          "modalidades": [
+            "audio",
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/speech-to-text",
           "notas": null,
           "limite_extra": "7.200 segundos de audio/hora · 28.800 segundos de audio/día"
@@ -460,7 +563,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 2000,
           "limite_tokens_dia": null,
           "contexto_tokens": null,
-          "modalidades": ["audio", "texto"],
+          "modalidades": [
+            "audio",
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/speech-to-text",
           "notas": null,
           "limite_extra": "7.200 segundos de audio/hora · 28.800 segundos de audio/día"
@@ -475,7 +581,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 100,
           "limite_tokens_dia": 3600,
           "contexto_tokens": 4000,
-          "modalidades": ["texto", "audio"],
+          "modalidades": [
+            "texto",
+            "audio"
+          ],
           "documentacion": "https://console.groq.com/docs/text-to-speech",
           "notas": null
         },
@@ -489,7 +598,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 100,
           "limite_tokens_dia": 3600,
           "contexto_tokens": 4000,
-          "modalidades": ["texto", "audio"],
+          "modalidades": [
+            "texto",
+            "audio"
+          ],
           "documentacion": "https://console.groq.com/docs/text-to-speech",
           "notas": null
         },
@@ -503,7 +615,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 1000,
           "limite_tokens_dia": 200000,
           "contexto_tokens": 131072,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/models",
           "notas": null
         },
@@ -517,7 +631,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 14400,
           "limite_tokens_dia": 500000,
           "contexto_tokens": 512,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/models",
           "notas": null
         },
@@ -531,7 +647,9 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": 14400,
           "limite_tokens_dia": 500000,
           "contexto_tokens": 512,
-          "modalidades": ["texto"],
+          "modalidades": [
+            "texto"
+          ],
           "documentacion": "https://console.groq.com/docs/models",
           "notas": null
         }
@@ -554,7 +672,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": null,
           "limite_tokens_dia": null,
           "contexto_tokens": 131072,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://docs.mistral.ai/models/mistral-moderation-26-03",
           "notas": "Gratis vía API. Mistral no publica límites de peticiones para este modelo."
         },
@@ -568,7 +689,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": null,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
           "notas": "La API cuesta $0,15/M tokens de entrada y $0,60/M de salida. Pesos Apache 2.0: puedes autoalojarlo gratis."
         },
@@ -582,7 +706,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": null,
           "limite_tokens_dia": null,
           "contexto_tokens": 262144,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://docs.mistral.ai/models/ministral-3-8b-25-12",
           "notas": "API de pago. Pesos Apache 2.0 para autoalojamiento gratuito."
         },
@@ -596,7 +723,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": null,
           "limite_tokens_dia": null,
           "contexto_tokens": 32768,
-          "modalidades": ["audio", "texto"],
+          "modalidades": [
+            "audio",
+            "texto"
+          ],
           "documentacion": "https://docs.mistral.ai/models/voxtral-small-25-07",
           "notas": "API de pago; pesos abiertos disponibles para ejecución local."
         },
@@ -610,7 +740,10 @@ window.DIRECTORIO_DATOS = {
           "limite_peticiones_dia": null,
           "limite_tokens_dia": null,
           "contexto_tokens": 32768,
-          "modalidades": ["texto", "imagen"],
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
           "documentacion": "https://docs.mistral.ai/models/shieldstral-1-0",
           "notas": "Pesos abiertos para moderación autoalojada."
         }
