@@ -1,15 +1,23 @@
+import argparse
 import json
 import os
+import sys
 import urllib.parse
 import urllib.request
 from datetime import datetime, timezone
 
-RUTA_JS = os.path.join(os.path.dirname(__file__), '..', 'data', 'proveedores.js')
-PREFIJO = 'window.DIRECTORIO_DATOS = '
-API_KEY = os.environ.get('GOOGLE_API_KEY')
+from validar_datos import PREFIJO, RUTA_JS, cargar_datos, validar_datos
+
+API_KEY = os.environ.get('GOOGLE_API_KEY', '').strip()
 
 URL_OPENROUTER = 'https://openrouter.ai/api/v1/models'
 URL_GOOGLE = 'https://generativelanguage.googleapis.com/v1beta/models'
+
+# Si el catálogo gratuito de OpenRouter cae más de este porcentaje de golpe,
+# se considera una anomalía y no se borran modelos.
+UMBRAL_CAIDA_OPENROUTER = 0.40
+MINIMO_MODELOS_OPENROUTER = 3
+MAX_HISTORIAL = 30
 
 # Modelos que OpenRouter lista con precio 0 pero cobran por otro concepto.
 MODELOS_EXCLUIDOS_OPENROUTER = {
@@ -23,6 +31,7 @@ MAPA_MODALIDADES = {
     'audio': 'audio',
     'video': 'video',
     'file': 'archivos',
+    'pdf': 'pdf',
 }
 
 DESCRIPCION_NUEVO_OPENROUTER = (
@@ -37,22 +46,23 @@ NOTA_NUEVO_OPENROUTER = (
 
 
 def cargar():
-    """Lee proveedores.js y extrae el objeto JSON que contiene."""
-    with open(RUTA_JS, 'r', encoding='utf-8') as f:
-        contenido = f.read()
-
-    inicio = contenido.find('{')
-    fin = contenido.rfind('}')
-    if inicio == -1 or fin == -1:
-        raise ValueError('El archivo de datos no tiene el formato esperado.')
-
-    return json.loads(contenido[inicio:fin + 1])
+    """Lee y valida proveedores.js."""
+    return cargar_datos(RUTA_JS)
 
 
-def guardar(datos):
-    """Vuelve a escribir proveedores.js con el objeto actualizado."""
-    with open(RUTA_JS, 'w', encoding='utf-8') as f:
-        f.write(PREFIJO + json.dumps(datos, ensure_ascii=False, indent=2) + ';\n')
+def guardar(datos, ruta=RUTA_JS):
+    """Valida y escribe de forma atómica para no dejar un archivo a medias."""
+    errores, _ = validar_datos(datos, ruta)
+    if errores:
+        raise ValueError('Datos inválidos:\n- ' + '\n- '.join(errores))
+
+    contenido = PREFIJO + json.dumps(datos, ensure_ascii=False, indent=2) + ';\n'
+    temporal = ruta + '.tmp'
+    with open(temporal, 'w', encoding='utf-8', newline='\n') as archivo:
+        archivo.write(contenido)
+        archivo.flush()
+        os.fsync(archivo.fileno())
+    os.replace(temporal, ruta)
 
 
 def resumen_error(error):
@@ -84,15 +94,43 @@ def modalidades_desde_api(modelo_api):
     return [MAPA_MODALIDADES[m] for m in entradas if m in MAPA_MODALIDADES]
 
 
-def actualizar_openrouter(datos):
+def _hoy():
+    return datetime.now(timezone.utc).strftime('%Y-%m-%d')
+
+
+def _huella_datos(datos):
+    """Huella de los datos que no cambian solo por ejecutar el proceso."""
+    return json.dumps(datos.get('proveedores', []), ensure_ascii=False, sort_keys=True)
+
+
+def agregar_historial(datos, ahora, estado, detalle, cambios, maximo=MAX_HISTORIAL):
+    historial = datos.get('historial')
+    if not isinstance(historial, list):
+        historial = []
+
+    if not cambios and historial:
+        datos['historial'] = historial[:maximo]
+        return
+
+    entrada = {
+        'fecha': ahora,
+        'estado': estado,
+        'detalle': detalle,
+    }
+    datos['historial'] = [entrada] + historial[:maximo - 1]
+
+
+def actualizar_openrouter(datos, hoy=None):
     """Consulta OpenRouter y sincroniza los modelos con precio 0.
 
     Devuelve (datos, exito, detalle).
     """
+    hoy = hoy or _hoy()
+
     try:
         peticion = urllib.request.Request(
             URL_OPENROUTER,
-            headers={'User-Agent': 'directorio-apis-ia/1.0'},
+            headers={'User-Agent': 'directorio-apis-ia/2.0'},
         )
         with urllib.request.urlopen(peticion, timeout=30) as respuesta:
             catalogo = json.loads(respuesta.read().decode('utf-8'))
@@ -108,14 +146,29 @@ def actualizar_openrouter(datos):
             continue
         gratuitos.append(modelo)
 
-    if not gratuitos:
-        return datos, False, 'OpenRouter: el catálogo no devolvió modelos gratuitos; datos conservados.'
+    if len(gratuitos) < MINIMO_MODELOS_OPENROUTER:
+        return (
+            datos,
+            False,
+            f'OpenRouter: el catálogo solo devolvió {len(gratuitos)} modelos gratuitos; '
+            'datos conservados.',
+        )
 
     proveedor = buscar_proveedor(datos, 'openrouter')
     if not proveedor:
         return datos, False, 'OpenRouter: no se encontró el proveedor en los datos; datos conservados.'
 
-    existentes = {m.get('nombre'): m for m in proveedor.get('modelos', [])}
+    previos = proveedor.get('modelos', [])
+    if previos and len(gratuitos) < len(previos) * (1 - UMBRAL_CAIDA_OPENROUTER):
+        caida = round((1 - len(gratuitos) / len(previos)) * 100)
+        return (
+            datos,
+            False,
+            f'OpenRouter: el catálogo pasó de {len(previos)} a {len(gratuitos)} modelos gratuitos '
+            f'({caida}% de caída); se conservan los datos para evitar borrados accidentales.',
+        )
+
+    existentes = {m.get('nombre'): m for m in previos}
     vistos = set()
     agregados = 0
     actualizados = 0
@@ -156,9 +209,11 @@ def actualizar_openrouter(datos):
             'limite_peticiones_dia': 50,
             'limite_tokens_dia': None,
             'contexto_tokens': contexto,
-            'modalidades': modalidades,
+            'modalidades': modalidades or ['texto'],
             'documentacion': f'https://openrouter.ai/{modelo_id}',
             'notas': NOTA_NUEVO_OPENROUTER,
+            'licencia': None,
+            'parametros': None,
             'origen': 'automatico',
         })
         agregados += 1
@@ -167,6 +222,9 @@ def actualizar_openrouter(datos):
     if retirados:
         proveedor['modelos'] = [m for m in proveedor.get('modelos', []) if m.get('nombre') in vistos]
 
+    proveedor['verificado'] = hoy
+    proveedor['actualizacion'] = 'automatica'
+
     detalle = (
         f'OpenRouter: {len(gratuitos)} modelos gratuitos verificados'
         f' ({agregados} añadidos, {len(retirados)} retirados, {actualizados} actualizados).'
@@ -174,12 +232,14 @@ def actualizar_openrouter(datos):
     return datos, True, detalle
 
 
-def actualizar_google(datos):
+def actualizar_google(datos, hoy=None):
     """Actualiza metadatos de los modelos de Google ya curados.
 
     Devuelve (datos, estado, detalle), donde estado es 'ok', 'omitido' o 'error'.
     No agrega ni elimina modelos: los nuevos se informan para revisarlos a mano.
     """
+    hoy = hoy or _hoy()
+
     if not API_KEY:
         return datos, 'omitido', 'Google: sin API key (GOOGLE_API_KEY); datos conservados.'
 
@@ -188,13 +248,14 @@ def actualizar_google(datos):
 
     try:
         while True:
-            url = URL_GOOGLE + '?key=' + API_KEY
+            parametros = {'key': API_KEY}
             if pagina:
-                url += '&pageToken=' + urllib.parse.quote(pagina)
+                parametros['pageToken'] = pagina
+            url = URL_GOOGLE + '?' + urllib.parse.urlencode(parametros)
 
             peticion = urllib.request.Request(
                 url,
-                headers={'User-Agent': 'directorio-apis-ia/1.0'},
+                headers={'User-Agent': 'directorio-apis-ia/2.0'},
             )
             with urllib.request.urlopen(peticion, timeout=30) as respuesta:
                 cuerpo = json.loads(respuesta.read().decode('utf-8'))
@@ -239,6 +300,9 @@ def actualizar_google(datos):
     existentes = {m.get('nombre') for m in proveedor.get('modelos', [])}
     nuevos = sorted(set(modelos_api) - existentes)
 
+    proveedor['verificado'] = hoy
+    proveedor['actualizacion'] = 'mixta'
+
     detalle = f'Google: API consultada correctamente ({actualizados} modelos actualizados).'
     if nuevos:
         detalle += f' {len(nuevos)} modelos nuevos detectados; revísalos antes de añadirlos.'
@@ -246,23 +310,36 @@ def actualizar_google(datos):
     return datos, 'ok', detalle
 
 
-def main():
+def main(argv=None):
+    parser = argparse.ArgumentParser(description='Actualiza data/proveedores.js.')
+    parser.add_argument(
+        '--dry-run',
+        action='store_true',
+        help='Consulta las fuentes y muestra el resultado sin escribir el archivo.',
+    )
+    args = parser.parse_args(argv)
+
     datos = cargar()
     ahora = datetime.now(timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')
+    hoy = ahora[:10]
+
+    estado_anterior = datos.get('estado')
+    detalle_anterior = datos.get('detalle_estado')
+    huella_anterior = _huella_datos(datos)
 
     detalles = []
     exitos = 0
     fallos = 0
     omitidos = 0
 
-    datos, exito_openrouter, detalle_openrouter = actualizar_openrouter(datos)
+    datos, exito_openrouter, detalle_openrouter = actualizar_openrouter(datos, hoy=hoy)
     detalles.append(detalle_openrouter)
     if exito_openrouter:
         exitos += 1
     else:
         fallos += 1
 
-    datos, estado_google, detalle_google = actualizar_google(datos)
+    datos, estado_google, detalle_google = actualizar_google(datos, hoy=hoy)
     detalles.append(detalle_google)
     if estado_google == 'ok':
         exitos += 1
@@ -281,16 +358,41 @@ def main():
     if exitos > 0:
         datos['ultima_actualizacion'] = ahora
 
+    detalle_estado = ' '.join(detalles)
     datos['ultimo_intento'] = ahora
     datos['estado'] = estado
-    datos['detalle_estado'] = ' '.join(detalles)
+    datos['detalle_estado'] = detalle_estado
 
-    guardar(datos)
+    cambios = (
+        _huella_datos(datos) != huella_anterior
+        or estado != estado_anterior
+        or detalle_estado != detalle_anterior
+    )
+    agregar_historial(datos, ahora, estado, detalle_estado, cambios)
+
+    if args.dry_run:
+        errores, advertencias = validar_datos(datos, RUTA_JS)
+        for advertencia in advertencias:
+            print('AVISO: ' + advertencia)
+        for error in errores:
+            print('ERROR: ' + error, file=sys.stderr)
+        if errores:
+            return 1
+        print('Dry run: no se escribió el archivo.')
+    else:
+        try:
+            guardar(datos)
+        except ValueError as error:
+            print(f'ERROR: {error}', file=sys.stderr)
+            return 1
 
     for detalle in detalles:
         print(detalle)
     print('Estado final: ' + estado)
+    if cambios:
+        print('Historial actualizado.')
+    return 0
 
 
 if __name__ == '__main__':
-    main()
+    sys.exit(main())
