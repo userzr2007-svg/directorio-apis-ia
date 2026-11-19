@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-19T02:22:57Z",
-  "ultimo_intento": "2026-11-19T02:22:57Z",
+  "ultima_actualizacion": "2026-11-19T02:45:13Z",
+  "ultimo_intento": "2026-11-19T02:45:13Z",
   "estado": "parcial",
-  "detalle_estado": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 2 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
+  "detalle_estado": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -26,10 +26,12 @@ window.DIRECTORIO_DATOS = {
             "imagen",
             "audio",
             "video",
-            "PDF"
+            "pdf"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": "Solo 20 peticiones al día: pensado para pruebas, no para producción."
+          "notas": "Solo 20 peticiones al día: pensado para pruebas, no para producción.",
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3.8-flash",
@@ -46,10 +48,12 @@ window.DIRECTORIO_DATOS = {
             "imagen",
             "audio",
             "video",
-            "PDF"
+            "pdf"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3.6-flash",
@@ -68,7 +72,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3-flash-preview",
@@ -87,7 +93,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3.5-flash-lite",
@@ -106,7 +114,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3.1-flash-lite",
@@ -125,7 +135,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemma-4-26b-a4b-it",
@@ -143,7 +155,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": "14.400 peticiones al día, pero solo 16K tokens por minuto."
+          "notas": "14.400 peticiones al día, pero solo 16K tokens por minuto.",
+          "licencia": "Gemma Terms",
+          "parametros": "26B (4B activos)"
         },
         {
           "nombre": "gemma-4-31b-it",
@@ -161,7 +175,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/models",
-          "notas": "14.400 peticiones al día, pero solo 16K tokens por minuto."
+          "notas": "14.400 peticiones al día, pero solo 16K tokens por minuto.",
+          "licencia": "Gemma Terms",
+          "parametros": "31B"
         },
         {
           "nombre": "gemini-3.8-flash-tts",
@@ -178,7 +194,9 @@ window.DIRECTORIO_DATOS = {
             "audio"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/speech-generation",
-          "notas": "Solo 10 peticiones al día en el nivel gratuito."
+          "notas": "Solo 10 peticiones al día en el nivel gratuito.",
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3.5-transcribe",
@@ -195,7 +213,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/audio",
-          "notas": "25 peticiones al día; el audio de entrada cuenta para el límite de tokens."
+          "notas": "25 peticiones al día; el audio de entrada cuenta para el límite de tokens.",
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "gemini-3.8-live",
@@ -213,9 +233,13 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://ai.google.dev/gemini-api/docs/live",
-          "notas": "Sin límite publicado de peticiones; el límite es de 65K tokens por minuto."
+          "notas": "Sin límite publicado de peticiones; el límite es de 65K tokens por minuto.",
+          "licencia": "Propietaria",
+          "parametros": null
         }
-      ]
+      ],
+      "verificado": "2026-11-19",
+      "actualizacion": "mixta"
     },
     {
       "id": "openrouter",
@@ -239,7 +263,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "baidu/ernie-5.5-flash-preview:free",
@@ -255,7 +281,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://openrouter.ai/baidu/ernie-5.5-flash-preview:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "thinkingmachines/inkling-2-small:free",
@@ -272,7 +300,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://openrouter.ai/thinkingmachines/inkling-2-small:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": "594B (17B activos)"
         },
         {
           "nombre": "liquid/lfm-3-1.7b:free",
@@ -288,7 +318,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://openrouter.ai/liquid/lfm-3-1.7b:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": "1,7B"
         },
         {
           "nombre": "particle-ai/particle-1:free",
@@ -305,7 +337,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://openrouter.ai/particle-ai/particle-1:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "recursive/flint-v1.0:free",
@@ -321,7 +355,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://openrouter.ai/recursive/flint-v1.0:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "nvidia/nemotron-3.5-super-vl:free",
@@ -339,7 +375,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3.5-super-vl:free",
-          "notas": null
+          "notas": null,
+          "licencia": "OpenMDW 1.1",
+          "parametros": "120B (12B activos)"
         },
         {
           "nombre": "dots-studio/dots-3-note-preview:free",
@@ -356,7 +394,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://openrouter.ai/dots-studio/dots-3-note-preview:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "nvidia/nemotron-3.5-lightning:free",
@@ -372,7 +412,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3.5-lightning:free",
-          "notas": null
+          "notas": null,
+          "licencia": "OpenMDW 1.1",
+          "parametros": "30B (3B activos)"
         },
         {
           "nombre": "cohere/north-mini-code:free",
@@ -388,7 +430,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://openrouter.ai/cohere/north-mini-code:free",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "nvidia/nemotron-3-ultra-550b-a55b:free",
@@ -404,7 +448,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3-ultra-550b-a55b:free",
-          "notas": null
+          "notas": null,
+          "licencia": "OpenMDW 1.1",
+          "parametros": "550B (55B activos)"
         },
         {
           "nombre": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
@@ -423,7 +469,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://openrouter.ai/nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
-          "notas": null
+          "notas": null,
+          "licencia": "OpenMDW 1.1",
+          "parametros": "30B (3B activos)"
         },
         {
           "nombre": "google/gemma-4-26b-a4b-it:free",
@@ -441,7 +489,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://openrouter.ai/google/gemma-4-26b-a4b-it:free",
-          "notas": null
+          "notas": null,
+          "licencia": "Gemma Terms",
+          "parametros": "26B (4B activos)"
         },
         {
           "nombre": "google/gemma-4-31b-it:free",
@@ -459,7 +509,9 @@ window.DIRECTORIO_DATOS = {
             "video"
           ],
           "documentacion": "https://openrouter.ai/google/gemma-4-31b-it:free",
-          "notas": null
+          "notas": null,
+          "licencia": "Gemma Terms",
+          "parametros": "31B"
         },
         {
           "nombre": "openrouter/free",
@@ -476,9 +528,13 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://openrouter.ai/openrouter/free",
-          "notas": "El modelo concreto puede variar en cada petición."
+          "notas": "El modelo concreto puede variar en cada petición.",
+          "licencia": "Varias",
+          "parametros": null
         }
-      ]
+      ],
+      "verificado": "2026-11-19",
+      "actualizacion": "automatica"
     },
     {
       "id": "groq",
@@ -501,7 +557,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://console.groq.com/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Apache 2.0",
+          "parametros": "120B (5,1B activos)"
         },
         {
           "nombre": "openai/gpt-oss-20b",
@@ -517,7 +575,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://console.groq.com/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Apache 2.0",
+          "parametros": "20B (3,6B activos)"
         },
         {
           "nombre": "qwen/qwen3.8-27b",
@@ -533,7 +593,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://console.groq.com/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Apache 2.0",
+          "parametros": "27B"
         },
         {
           "nombre": "whisper-large-v3",
@@ -551,7 +613,9 @@ window.DIRECTORIO_DATOS = {
           ],
           "documentacion": "https://console.groq.com/docs/speech-to-text",
           "notas": null,
-          "limite_extra": "7.200 segundos de audio/hora · 28.800 segundos de audio/día"
+          "limite_extra": "7.200 segundos de audio/hora · 28.800 segundos de audio/día",
+          "licencia": "MIT",
+          "parametros": "1,55B"
         },
         {
           "nombre": "whisper-large-v3-turbo",
@@ -569,7 +633,9 @@ window.DIRECTORIO_DATOS = {
           ],
           "documentacion": "https://console.groq.com/docs/speech-to-text",
           "notas": null,
-          "limite_extra": "7.200 segundos de audio/hora · 28.800 segundos de audio/día"
+          "limite_extra": "7.200 segundos de audio/hora · 28.800 segundos de audio/día",
+          "licencia": "MIT",
+          "parametros": "809M"
         },
         {
           "nombre": "canopylabs/orpheus-v1-english",
@@ -586,7 +652,9 @@ window.DIRECTORIO_DATOS = {
             "audio"
           ],
           "documentacion": "https://console.groq.com/docs/text-to-speech",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "canopylabs/orpheus-arabic-saudi",
@@ -603,7 +671,9 @@ window.DIRECTORIO_DATOS = {
             "audio"
           ],
           "documentacion": "https://console.groq.com/docs/text-to-speech",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": null
         },
         {
           "nombre": "openai/gpt-oss-safeguard-20b",
@@ -619,7 +689,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://console.groq.com/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": "Apache 2.0",
+          "parametros": "20B (3,6B activos)"
         },
         {
           "nombre": "meta-llama/llama-prompt-guard-2-86m",
@@ -635,7 +707,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://console.groq.com/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": "86M"
         },
         {
           "nombre": "meta-llama/llama-prompt-guard-2-22m",
@@ -651,9 +725,13 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://console.groq.com/docs/models",
-          "notas": null
+          "notas": null,
+          "licencia": null,
+          "parametros": "22M"
         }
-      ]
+      ],
+      "verificado": "2026-11-18",
+      "actualizacion": "manual"
     },
     {
       "id": "mistral",
@@ -677,7 +755,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://docs.mistral.ai/models/mistral-moderation-26-03",
-          "notas": "Gratis vía API. Mistral no publica límites de peticiones para este modelo."
+          "notas": "Gratis vía API. Mistral no publica límites de peticiones para este modelo.",
+          "licencia": "Propietaria",
+          "parametros": null
         },
         {
           "nombre": "mistral-small-2603",
@@ -694,7 +774,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://docs.mistral.ai/models/mistral-small-4-0-26-03",
-          "notas": "La API cuesta $0,15/M tokens de entrada y $0,60/M de salida. Pesos Apache 2.0: puedes autoalojarlo gratis."
+          "notas": "La API cuesta $0,15/M tokens de entrada y $0,60/M de salida. Pesos Apache 2.0: puedes autoalojarlo gratis.",
+          "licencia": "Apache 2.0",
+          "parametros": "119B (6,5B activos)"
         },
         {
           "nombre": "ministral-8b-2512",
@@ -711,7 +793,9 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://docs.mistral.ai/models/ministral-3-8b-25-12",
-          "notas": "API de pago. Pesos Apache 2.0 para autoalojamiento gratuito."
+          "notas": "API de pago. Pesos Apache 2.0 para autoalojamiento gratuito.",
+          "licencia": "Apache 2.0",
+          "parametros": "8B"
         },
         {
           "nombre": "voxtral-small-2507",
@@ -728,7 +812,9 @@ window.DIRECTORIO_DATOS = {
             "texto"
           ],
           "documentacion": "https://docs.mistral.ai/models/voxtral-small-25-07",
-          "notas": "API de pago; pesos abiertos disponibles para ejecución local."
+          "notas": "API de pago; pesos abiertos disponibles para ejecución local.",
+          "licencia": "Apache 2.0",
+          "parametros": "24B"
         },
         {
           "nombre": "shieldstral-1.0",
@@ -745,9 +831,269 @@ window.DIRECTORIO_DATOS = {
             "imagen"
           ],
           "documentacion": "https://docs.mistral.ai/models/shieldstral-1-0",
-          "notas": "Pesos abiertos para moderación autoalojada."
+          "notas": "Pesos abiertos para moderación autoalojada.",
+          "licencia": "Pesos abiertos",
+          "parametros": null
+        }
+      ],
+      "verificado": "2026-11-18",
+      "actualizacion": "manual"
+    },
+    {
+      "id": "cerebras",
+      "nombre": "Cerebras",
+      "sitio_web": "https://cloud.cerebras.ai/",
+      "documentacion": "https://inference-docs.cerebras.ai/",
+      "notas": "Nivel Free Trial con límites por modelo. La inferencia compartida incluye dos modelos de pesos abiertos y se sirve a muy alta velocidad.",
+      "verificado": "2026-11-18",
+      "actualizacion": "manual",
+      "modelos": [
+        {
+          "nombre": "gpt-oss-120b",
+          "nombre_display": "GPT-OSS 120B",
+          "descripcion": "Modelo abierto de OpenAI con razonamiento y uso de herramientas, servido por Cerebras a unos 3.000 tokens por segundo.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 5,
+          "limite_tokens_minuto": 30000,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": 1000000,
+          "contexto_tokens": 65536,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://inference-docs.cerebras.ai/models/openai-oss",
+          "notas": "Free Trial: 5 RPM, 30K tokens/min sin caché y 1M tokens/día. El contexto gratuito es de 65K.",
+          "licencia": "Apache 2.0",
+          "parametros": "120B (5,1B activos)"
+        },
+        {
+          "nombre": "qwen-3.8-27b",
+          "nombre_display": "Qwen 3.8 27B",
+          "descripcion": "Modelo denso multimodal de Alibaba para agentes, código, investigación y flujos de trabajo de larga duración.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 300,
+          "limite_tokens_minuto": 150000,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 65536,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://inference-docs.cerebras.ai/models/qwen-3.8-27b",
+          "notas": "Free Trial: 300 RPM y 150K tokens/min sin caché. El contexto gratuito es de 64K.",
+          "limite_extra": "750K tokens/min totales (incluyendo caché).",
+          "licencia": "Apache 2.0",
+          "parametros": "27B"
         }
       ]
+    },
+    {
+      "id": "cloudflare",
+      "nombre": "Cloudflare Workers AI",
+      "sitio_web": "https://developers.cloudflare.com/workers-ai/",
+      "documentacion": "https://developers.cloudflare.com/workers-ai/models/",
+      "notas": "Incluido en el plan gratuito de Workers con 10.000 Neuronas al día. Los límites son por tipo de tarea y el consumo se descuenta del cupo diario.",
+      "verificado": "2026-11-18",
+      "actualizacion": "manual",
+      "modelos": [
+        {
+          "nombre": "@cf/openai/gpt-oss-120b",
+          "nombre_display": "GPT-OSS 120B",
+          "descripcion": "Modelo abierto de OpenAI para razonamiento, agentes y cargas de propósito general, ejecutado en la red de Cloudflare.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 300,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 128000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://developers.cloudflare.com/workers-ai/models/gpt-oss-120b/",
+          "notas": "Consume Neuronas del cupo gratuito de 10.000/día. Generación de texto: 300 peticiones/minuto.",
+          "licencia": "Apache 2.0",
+          "parametros": "120B (5,1B activos)"
+        },
+        {
+          "nombre": "@cf/qwen/qwen3.8-27b",
+          "nombre_display": "Qwen 3.8 27B",
+          "descripcion": "Modelo multimodal de Qwen con visión, razonamiento y llamadas a funciones para agentes y código.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 300,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 262144,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://developers.cloudflare.com/workers-ai/models/qwen3.8-27b/",
+          "notas": "Consume Neuronas del cupo gratuito de 10.000/día. Generación de texto: 300 peticiones/minuto.",
+          "licencia": "Apache 2.0",
+          "parametros": "27B"
+        },
+        {
+          "nombre": "@cf/google/gemma-4-26b-a4b-it",
+          "nombre_display": "Gemma 4 26B A4B",
+          "descripcion": "Modelo abierto de Google con mezcla de expertos, visión y razonamiento, adecuado para agentes y análisis de imágenes.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 300,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://developers.cloudflare.com/workers-ai/models/gemma-4-26b-a4b-it/",
+          "notas": "Consume Neuronas del cupo gratuito de 10.000/día. Generación de texto: 300 peticiones/minuto.",
+          "licencia": "Gemma Terms",
+          "parametros": "26B (4B activos)"
+        }
+      ]
+    },
+    {
+      "id": "cohere",
+      "nombre": "Cohere",
+      "sitio_web": "https://dashboard.cohere.com/",
+      "documentacion": "https://docs.cohere.com/docs/models",
+      "notas": "Las claves de evaluación (trial) son gratuitas, pero están limitadas a 1.000 llamadas API al mes y 20 peticiones/minuto en los modelos Chat.",
+      "verificado": "2026-11-18",
+      "actualizacion": "manual",
+      "modelos": [
+        {
+          "nombre": "command-a-plus-05-2026",
+          "nombre_display": "Command A+",
+          "descripcion": "Modelo insignia de Cohere con mezcla de expertos, visión, agentes, razonamiento y traducción en un solo conjunto de pesos.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 128000,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://docs.cohere.com/docs/command-a-plus",
+          "notas": "Clave trial: 20 RPM y 1.000 llamadas API al mes.",
+          "limite_extra": "1.000 llamadas API al mes por cuenta.",
+          "licencia": "Propietaria",
+          "parametros": null
+        },
+        {
+          "nombre": "command-a-03-2025",
+          "nombre_display": "Command A",
+          "descripcion": "Modelo para agentes, RAG, uso de herramientas y cargas multilingües con contexto de 256K tokens.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://docs.cohere.com/docs/command-a",
+          "notas": "Clave trial: 20 RPM y 1.000 llamadas API al mes.",
+          "limite_extra": "1.000 llamadas API al mes por cuenta.",
+          "licencia": "Propietaria",
+          "parametros": null
+        },
+        {
+          "nombre": "command-a-reasoning-08-2025",
+          "nombre_display": "Command A Reasoning",
+          "descripcion": "Modelo de razonamiento en 23 idiomas para problemas complejos, agentes y tareas de varios pasos.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://docs.cohere.com/docs/command-a-reasoning",
+          "notas": "Clave trial: 20 RPM y 1.000 llamadas API al mes.",
+          "limite_extra": "1.000 llamadas API al mes por cuenta.",
+          "licencia": "Propietaria",
+          "parametros": null
+        },
+        {
+          "nombre": "command-a-vision-07-2025",
+          "nombre_display": "Command A Vision",
+          "descripcion": "Modelo multimodal para gráficos, tablas, OCR, preguntas sobre documentos y detección de objetos.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 128000,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://docs.cohere.com/docs/command-a-vision",
+          "notas": "Clave trial: 20 RPM y 1.000 llamadas API al mes.",
+          "limite_extra": "1.000 llamadas API al mes por cuenta.",
+          "licencia": "Propietaria",
+          "parametros": null
+        },
+        {
+          "nombre": "north-mini-code-1.0",
+          "nombre_display": "North Mini Code",
+          "descripcion": "Modelo de mezcla de expertos de 30B totales y 3B activos, entrenado para programación agéntica y uso de herramientas.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://docs.cohere.com/docs/north-mini-code-1.0",
+          "notas": "Clave trial: 20 RPM y 1.000 llamadas API al mes. También aparece como modelo :free en OpenRouter.",
+          "limite_extra": "1.000 llamadas API al mes por cuenta.",
+          "licencia": null,
+          "parametros": "30B (3B activos)"
+        },
+        {
+          "nombre": "tiny-aya-global",
+          "nombre_display": "Tiny Aya Global",
+          "descripcion": "Modelo multilingüe de 3,35B parámetros que cubre 70 idiomas, con un buen equilibrio entre idiomas y regiones.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 8000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://docs.cohere.com/docs/aya",
+          "notas": "Disponible con clave trial; sus pesos también pueden autoalojarse.",
+          "limite_extra": "1.000 llamadas API al mes por cuenta.",
+          "licencia": "Pesos abiertos",
+          "parametros": "3,35B"
+        }
+      ]
+    }
+  ],
+  "version": 2,
+  "historial": [
+    {
+      "fecha": "2026-11-19T02:45:13Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
+    },
+    {
+      "fecha": "2026-11-19T02:22:57Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 2 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
     }
   ]
 };
