@@ -3,20 +3,49 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Directorio de modelos de IA con API gratuita o autoalojable: Google AI Studio, OpenRouter, Groq y Mistral, con límites y documentación oficial.">
+  <meta name="description" content="Directorio de modelos de IA con API gratuita o autoalojable: Google AI Studio, OpenRouter, Groq, Mistral, Cerebras, Cloudflare Workers AI y Cohere, con límites, contexto y documentación oficial.">
   <meta name="theme-color" content="#4f46e5">
+  <meta name="color-scheme" content="light dark">
+  <meta name="robots" content="index, follow">
   <title>Directorio de APIs de IA Gratuitas</title>
+  <link rel="canonical" href="https://userzr2007-svg.github.io/directorio-apis-ia/">
+  <link rel="icon" type="image/svg+xml" href="favicon.svg">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="Directorio de APIs de IA Gratuitas">
+  <meta property="og:title" content="Directorio de APIs de IA Gratuitas">
+  <meta property="og:description" content="52 modelos gratuitos o autoalojables, con límites reales, contexto, licencia y enlaces a la documentación oficial.">
+  <meta property="og:url" content="https://userzr2007-svg.github.io/directorio-apis-ia/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Directorio de APIs de IA Gratuitas">
+  <meta name="twitter:description" content="52 modelos gratuitos o autoalojables, con límites reales y documentación oficial.">
+  <script>
+    (function () {
+      try {
+        var tema = localStorage.getItem('directorio:tema');
+        if (tema === 'oscuro' || (!tema && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+          document.documentElement.setAttribute('data-tema', 'oscuro');
+        }
+      } catch (error) {
+        // Sin acceso a localStorage se usa el tema claro.
+      }
+    })();
+  </script>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <header class="cabecera">
     <div class="cabecera-contenido">
-      <p class="eyebrow">Actualización automática diaria</p>
+      <div class="cabecera-superior">
+        <p class="eyebrow">Actualización automática diaria</p>
+        <button id="boton-tema" class="boton-tema" type="button" aria-label="Cambiar a tema oscuro" title="Cambiar a tema oscuro">🌙</button>
+      </div>
       <h1>🤖 APIs de IA Gratuitas</h1>
       <p class="subtitulo">Modelos gratuitos o autoalojables, con sus límites reales, capacidades y enlaces a la documentación oficial.</p>
       <div class="meta">
         <span class="meta-chip" id="chip-fecha" title="Fecha de la última actualización correcta">🕒 <span id="fecha">-</span></span>
         <span class="meta-chip" id="chip-estado">Estado: <span id="estado">-</span></span>
+        <span class="meta-chip" id="chip-total">📚 <span id="total">-</span></span>
       </div>
       <p class="detalle-estado oculta" id="detalle-estado"></p>
     </div>
@@ -26,19 +55,23 @@
     <section class="barra-busqueda" aria-label="Buscar y filtrar modelos">
       <div class="buscador">
         <span class="icono-buscar" aria-hidden="true">🔍</span>
-        <input type="search" id="buscador" placeholder="Buscar modelo, proveedor o capacidad…" autocomplete="off" aria-label="Buscar modelos">
+        <input type="search" id="buscador" placeholder="Buscar modelo, proveedor, licencia o capacidad…" autocomplete="off" aria-label="Buscar modelos">
         <button id="limpiar-busqueda" class="limpiar oculta" type="button" aria-label="Limpiar búsqueda">✕</button>
       </div>
 
       <div class="filtros">
         <div class="chips" id="filtros-acceso" role="group" aria-label="Filtrar por tipo de acceso">
-          <button class="chip activo" data-acceso="todos" type="button">Todos</button>
-          <button class="chip" data-acceso="gratis" type="button">Gratis</button>
-          <button class="chip" data-acceso="autoalojable" type="button">Autoalojable</button>
+          <button class="chip activo" data-acceso="todos" type="button" aria-pressed="true">Todos <span class="chip-cuenta" data-cuenta="todos">0</span></button>
+          <button class="chip" data-acceso="gratis" type="button" aria-pressed="false">Gratis <span class="chip-cuenta" data-cuenta="gratis">0</span></button>
+          <button class="chip" data-acceso="autoalojable" type="button" aria-pressed="false">Autoalojable <span class="chip-cuenta" data-cuenta="autoalojable">0</span></button>
+          <button class="chip chip-favoritos" data-acceso="favoritos" type="button" aria-pressed="false">★ Favoritos <span class="chip-cuenta" data-cuenta="favoritos">0</span></button>
         </div>
-        <select id="filtro-proveedor" aria-label="Filtrar por proveedor">
-          <option value="todos">Todos los proveedores</option>
-        </select>
+        <div class="acciones-filtros">
+          <select id="filtro-proveedor" aria-label="Filtrar por proveedor">
+            <option value="todos">Todos los proveedores</option>
+          </select>
+          <button id="limpiar-filtros" class="boton-limpiar oculta" type="button">Limpiar filtros</button>
+        </div>
       </div>
 
       <p class="resultado-conteo" id="conteo" aria-live="polite"></p>
@@ -46,9 +79,10 @@
 
     <div id="proveedores"></div>
 
-    <p class="sin-resultados oculta" id="sin-resultados">
-      No se encontraron modelos con esos filtros. Prueba con otra búsqueda o cambia el tipo de acceso.
-    </p>
+    <div class="sin-resultados oculta" id="sin-resultados">
+      <p id="sin-resultados-texto">No se encontraron modelos con esos filtros. Prueba con otra búsqueda o cambia el tipo de acceso.</p>
+      <button id="limpiar-filtros-vacio" class="boton-primario" type="button">Limpiar filtros</button>
+    </div>
 
     <section class="leyenda">
       <h2>Cómo leer las tarjetas</h2>
@@ -57,16 +91,49 @@
         <li><strong>TPM</strong>: tokens por minuto · <strong>TPD</strong>: tokens por día.</li>
         <li><strong>Contexto</strong>: tamaño máximo de la conversación, en tokens.</li>
         <li><strong>Gratis</strong>: API sin costo con límites · <strong>Autoalojable</strong>: pesos abiertos; la API es de pago, pero puedes ejecutarlo por tu cuenta.</li>
+        <li><strong>★</strong>: guarda un modelo en favoritos · <strong>⇄ Comparar</strong>: añade hasta 3 modelos a la tabla comparativa.</li>
       </ul>
       <p>Los límites gratuitos cambian con frecuencia y se aplican por proyecto u organización. Verifica siempre la documentación oficial antes de usar un modelo en producción.</p>
-      <p>Haz clic en el nombre exacto del modelo para copiarlo.</p>
+      <p>Haz clic en el nombre exacto del modelo para copiarlo. Si un dato no coincide con la documentación, usa el enlace <strong>⚑ Reportar</strong> de la tarjeta.</p>
     </section>
+
+    <details class="historial oculta" id="historial">
+      <summary>🕘 Historial de actualizaciones</summary>
+      <ol id="lista-historial"></ol>
+    </details>
   </main>
 
   <footer>
     <p>Datos de referencia · Actualización automática diaria con GitHub Actions.</p>
-    <p><a href="https://github.com/userzr2007-svg/directorio-apis-ia" target="_blank" rel="noopener">Ver el proyecto en GitHub ↗</a></p>
+    <p>
+      <a href="https://github.com/userzr2007-svg/directorio-apis-ia" target="_blank" rel="noopener">Ver el proyecto en GitHub ↗</a>
+      · <a href="https://github.com/userzr2007-svg/directorio-apis-ia/issues/new" target="_blank" rel="noopener">Reportar un problema ↗</a>
+    </p>
   </footer>
+
+  <button id="volver-arriba" class="volver-arriba" type="button" aria-label="Volver arriba" title="Volver arriba">↑</button>
+
+  <div class="barra-comparar oculta" id="barra-comparar" role="region" aria-label="Comparador de modelos">
+    <span id="comparar-texto"></span>
+    <div class="barra-comparar-acciones">
+      <button id="abrir-comparacion" class="boton-primario" type="button">Comparar</button>
+      <button id="limpiar-comparacion" class="boton-secundario" type="button">Limpiar</button>
+    </div>
+  </div>
+
+  <dialog id="dialogo-comparar" class="dialogo-comparar" aria-labelledby="titulo-comparar">
+    <div class="dialogo-cabecera">
+      <h2 id="titulo-comparar">Comparar modelos</h2>
+      <button id="cerrar-comparacion" class="cerrar-dialogo" type="button" aria-label="Cerrar comparación">✕</button>
+    </div>
+    <div class="tabla-scroll" id="tabla-comparar"></div>
+  </dialog>
+
+  <p id="aviso-copia" class="aviso-copia" aria-live="polite"></p>
+
+  <noscript>
+    <p class="sin-resultados">Activa JavaScript para cargar el directorio y usar la búsqueda, los filtros y el comparador.</p>
+  </noscript>
 
   <script src="data/proveedores.js"></script>
   <script src="app.js"></script>
