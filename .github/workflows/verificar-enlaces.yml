@@ -1,0 +1,48 @@
+name: Verificar enlaces de documentación
+
+on:
+  schedule:
+    - cron: '0 7 * * 1'  # Todos los lunes a las 07:00 UTC
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  enlaces:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Descargar repositorio
+        uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Comprobar enlaces
+        id: comprobar
+        continue-on-error: true
+        run: python scripts/verificar_enlaces.py --json enlaces.json --salida enlaces_roto.txt
+
+      - name: Publicar resumen
+        if: always()
+        run: |
+          if [ -f enlaces_roto.txt ]; then
+            cat enlaces_roto.txt >> "$GITHUB_STEP_SUMMARY"
+          fi
+
+      - name: Abrir o actualizar incidencia
+        if: steps.comprobar.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          TITULO="Enlaces de documentación con problemas"
+          NUMERO=$(gh issue list --state open --search "$TITULO in:title" --json number --jq '.[0].number // empty')
+          if [ -n "$NUMERO" ]; then
+            gh issue comment "$NUMERO" --body-file enlaces_roto.txt
+          else
+            gh issue create --title "$TITULO" --body-file enlaces_roto.txt
+          fi

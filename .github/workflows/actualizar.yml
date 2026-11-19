@@ -5,34 +5,64 @@ on:
     - cron: '0 6 * * *'  # Todos los días a las 06:00 UTC
   workflow_dispatch:      # Permite ejecutarlo manualmente cuando quieras
 
+concurrency:
+  group: actualizar-datos
+  cancel-in-progress: false
+
 permissions:
   contents: write
 
 jobs:
   actualizar:
     runs-on: ubuntu-latest
+    timeout-minutes: 15
     steps:
       - name: Descargar repositorio
         uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
 
       - name: Configurar Python
         uses: actions/setup-python@v5
         with:
-          python-version: '3.x'
+          python-version: '3.12'
+
+      - name: Validar datos actuales
+        run: python scripts/validar_datos.py
+
+      - name: Ejecutar pruebas del actualizador
+        run: python -m unittest discover -s scripts -p "test_*.py" -v
 
       - name: Ejecutar script de actualización
         env:
           GOOGLE_API_KEY: ${{ secrets.GOOGLE_API_KEY }}
         run: python scripts/actualizar.py
 
+      - name: Validar datos actualizados
+        run: python scripts/validar_datos.py
+
       - name: Confirmar cambios si los hay
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          if ! git diff --quiet; then
-            git add data/proveedores.js
-            git commit -m "chore: actualizar datos de APIs IA"
-            git push
-          else
+
+          if git diff --quiet -- data/proveedores.js; then
             echo "No hay cambios que confirmar."
+            exit 0
           fi
+
+          git add data/proveedores.js
+          git commit -m "chore: actualizar datos de APIs IA"
+
+          for intento in 1 2 3; do
+            if git pull --rebase --autostash origin "${GITHUB_REF_NAME}" \
+              && git push origin "HEAD:${GITHUB_REF_NAME}"; then
+              echo "Cambios publicados."
+              exit 0
+            fi
+            echo "Reintento ${intento} de publicación..."
+            sleep $((intento * 5))
+          done
+
+          echo "No se pudieron publicar los cambios después de 3 intentos."
+          exit 1
