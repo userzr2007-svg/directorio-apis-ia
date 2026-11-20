@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-19T06:52:14Z",
-  "ultimo_intento": "2026-11-19T06:52:14Z",
+  "ultima_actualizacion": "2026-11-20T06:50:49Z",
+  "ultimo_intento": "2026-11-20T06:50:49Z",
   "estado": "parcial",
-  "detalle_estado": "OpenRouter: 15 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
+  "detalle_estado": "OpenRouter: 13 modelos gratuitos verificados (0 añadidos, 2 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -286,25 +286,6 @@ window.DIRECTORIO_DATOS = {
           "parametros": null
         },
         {
-          "nombre": "thinkingmachines/inkling-2-small:free",
-          "nombre_display": "Inkling 2 Small",
-          "descripcion": "Modelo multimodal de razonamiento de Thinking Machines Lab, con 17B parámetros activos sobre 594B totales.",
-          "tipo_acceso": "gratis",
-          "limite_peticiones_minuto": 20,
-          "limite_tokens_minuto": null,
-          "limite_peticiones_dia": 50,
-          "limite_tokens_dia": null,
-          "contexto_tokens": 1048576,
-          "modalidades": [
-            "texto",
-            "imagen"
-          ],
-          "documentacion": "https://openrouter.ai/thinkingmachines/inkling-2-small:free",
-          "notas": null,
-          "licencia": null,
-          "parametros": "594B (17B activos)"
-        },
-        {
           "nombre": "liquid/lfm-3-1.7b:free",
           "nombre_display": "LFM3 1.7B",
           "descripcion": "Modelo compacto de 1,7B parámetros, entrenado para agentes, uso de herramientas y salidas estructuradas.",
@@ -417,24 +398,6 @@ window.DIRECTORIO_DATOS = {
           "parametros": "30B (3B activos)"
         },
         {
-          "nombre": "cohere/north-mini-code:free",
-          "nombre_display": "North Mini Code",
-          "descripcion": "Modelo ligero de Cohere especializado en código y tareas de desarrollo.",
-          "tipo_acceso": "gratis",
-          "limite_peticiones_minuto": 20,
-          "limite_tokens_minuto": null,
-          "limite_peticiones_dia": 50,
-          "limite_tokens_dia": null,
-          "contexto_tokens": 256000,
-          "modalidades": [
-            "texto"
-          ],
-          "documentacion": "https://openrouter.ai/cohere/north-mini-code:free",
-          "notas": null,
-          "licencia": null,
-          "parametros": null
-        },
-        {
           "nombre": "nvidia/nemotron-3-ultra-550b-a55b:free",
           "nombre_display": "Nemotron 3 Ultra",
           "descripcion": "Modelo de gran escala de NVIDIA (550B parámetros totales) para razonamiento y tareas complejas.",
@@ -533,7 +496,7 @@ window.DIRECTORIO_DATOS = {
           "parametros": null
         }
       ],
-      "verificado": "2026-11-19",
+      "verificado": "2026-11-20",
       "actualizacion": "automatica"
     },
     {
@@ -1085,6 +1048,11 @@ window.DIRECTORIO_DATOS = {
   ],
   "version": 2,
   "historial": [
+    {
+      "fecha": "2026-11-20T06:50:49Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 13 modelos gratuitos verificados (0 añadidos, 2 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
+    },
     {
       "fecha": "2026-11-19T02:45:13Z",
       "estado": "parcial",
