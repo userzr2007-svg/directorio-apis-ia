@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-20T06:50:49Z",
-  "ultimo_intento": "2026-11-20T06:50:49Z",
+  "ultima_actualizacion": "2026-11-21T06:48:01Z",
+  "ultimo_intento": "2026-11-21T06:48:01Z",
   "estado": "parcial",
-  "detalle_estado": "OpenRouter: 13 modelos gratuitos verificados (0 añadidos, 2 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
+  "detalle_estado": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 1 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -361,25 +361,6 @@ window.DIRECTORIO_DATOS = {
           "parametros": "120B (12B activos)"
         },
         {
-          "nombre": "dots-studio/dots-3-note-preview:free",
-          "nombre_display": "Dots3-Note Preview",
-          "descripcion": "Modelo de Dots Studio para notas y contenido multimodal (texto e imagen).",
-          "tipo_acceso": "gratis",
-          "limite_peticiones_minuto": 20,
-          "limite_tokens_minuto": null,
-          "limite_peticiones_dia": 50,
-          "limite_tokens_dia": null,
-          "contexto_tokens": 512000,
-          "modalidades": [
-            "texto",
-            "imagen"
-          ],
-          "documentacion": "https://openrouter.ai/dots-studio/dots-3-note-preview:free",
-          "notas": null,
-          "licencia": null,
-          "parametros": null
-        },
-        {
           "nombre": "nvidia/nemotron-3.5-lightning:free",
           "nombre_display": "Nemotron 3.5 Lightning",
           "descripcion": "Modelo de texto rápido de NVIDIA con contexto de 1M tokens para tareas de alto volumen.",
@@ -496,7 +477,7 @@ window.DIRECTORIO_DATOS = {
           "parametros": null
         }
       ],
-      "verificado": "2026-11-20",
+      "verificado": "2026-11-21",
       "actualizacion": "automatica"
     },
     {
@@ -1048,6 +1029,11 @@ window.DIRECTORIO_DATOS = {
   ],
   "version": 2,
   "historial": [
+    {
+      "fecha": "2026-11-21T06:48:01Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 1 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
+    },
     {
       "fecha": "2026-11-20T06:50:49Z",
       "estado": "parcial",
