@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-21T06:48:01Z",
-  "ultimo_intento": "2026-11-21T06:48:01Z",
+  "ultima_actualizacion": "2026-11-22T06:46:09Z",
+  "ultimo_intento": "2026-11-22T06:46:09Z",
   "estado": "parcial",
-  "detalle_estado": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 1 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
+  "detalle_estado": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -477,7 +477,7 @@ window.DIRECTORIO_DATOS = {
           "parametros": null
         }
       ],
-      "verificado": "2026-11-21",
+      "verificado": "2026-11-22",
       "actualizacion": "automatica"
     },
     {
@@ -1029,6 +1029,11 @@ window.DIRECTORIO_DATOS = {
   ],
   "version": 2,
   "historial": [
+    {
+      "fecha": "2026-11-22T06:46:09Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
+    },
     {
       "fecha": "2026-11-21T06:48:01Z",
       "estado": "parcial",
