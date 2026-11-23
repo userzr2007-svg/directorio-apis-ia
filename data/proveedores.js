@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-22T06:46:09Z",
-  "ultimo_intento": "2026-11-22T06:46:09Z",
+  "ultima_actualizacion": "2026-11-23T07:00:41Z",
+  "ultimo_intento": "2026-11-23T07:00:41Z",
   "estado": "parcial",
-  "detalle_estado": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
+  "detalle_estado": "OpenRouter: 13 modelos gratuitos verificados (1 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -475,9 +475,29 @@ window.DIRECTORIO_DATOS = {
           "notas": "El modelo concreto puede variar en cada petición.",
           "licencia": "Varias",
           "parametros": null
+        },
+        {
+          "nombre": "dots-studio/dots-3-note-preview:free",
+          "nombre_display": "Dots3-Note Preview",
+          "descripcion": "Modelo gratuito de Dots3-Note Preview disponible a través de OpenRouter. Consulta su documentación para ver capacidades y límites.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": 20,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": 50,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 512000,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://openrouter.ai/dots-studio/dots-3-note-preview:free",
+          "notas": "Añadido automáticamente. Límite gratuito de OpenRouter: 20 peticiones/minuto y 50/día (1.000/día con $10 o más en créditos).",
+          "licencia": null,
+          "parametros": null,
+          "origen": "automatico"
         }
       ],
-      "verificado": "2026-11-22",
+      "verificado": "2026-11-23",
       "actualizacion": "automatica"
     },
     {
@@ -1029,6 +1049,11 @@ window.DIRECTORIO_DATOS = {
   ],
   "version": 2,
   "historial": [
+    {
+      "fecha": "2026-11-23T07:00:41Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 13 modelos gratuitos verificados (1 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
+    },
     {
       "fecha": "2026-11-22T06:46:09Z",
       "estado": "parcial",
