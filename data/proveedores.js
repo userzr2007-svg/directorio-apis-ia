@@ -1025,10 +1025,281 @@ window.DIRECTORIO_DATOS = {
           "parametros": "3,35B"
         }
       ]
+    },
+    {
+      "id": "kilo",
+      "nombre": "Kilo Gateway",
+      "sitio_web": "https://kilo.ai/",
+      "documentacion": "https://kilo.ai/docs/gateway",
+      "notas": "API compatible con OpenAI en https://ai-gateway.kilo.ai/api/v1. Los modelos gratuitos tienen coste 0, pueden usarse sin clave y comparten un l?mite de 200 peticiones/hora por IP. Algunos proveedores usan las peticiones para mejorar sus servicios: no env?es datos confidenciales.",
+      "verificado": "2026-11-26",
+      "actualizacion": "manual",
+      "modelos": [
+        {
+          "nombre": "kilo-auto/free",
+          "nombre_display": "Auto Free",
+          "descripcion": "Router gratuito que elige automáticamente un modelo gratuito disponible en cada sesión; no requiere créditos.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Enrutamiento dinámico: el modelo subyacente puede cambiar. Puede registrar y usar las peticiones; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "Varias",
+          "parametros": "Variable"
+        },
+        {
+          "nombre": "inclusionai/ling-3.2-flash:free",
+          "nombre_display": "Ling 3.2 Flash",
+          "descripcion": "Modelo de razonamiento híbrido de inclusionAI; acepta texto e imagen (hasta 200 imágenes por petición) y contexto de 1M tokens.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1048576,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Coste 0. El proveedor puede registrar y usar las peticiones para mejorar el servicio; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": null,
+          "parametros": null
+        },
+        {
+          "nombre": "baidu/ernie-5.5-flash-preview:free",
+          "nombre_display": "ERNIE 5.5 Flash Preview",
+          "descripcion": "Modelo de Baidu con mejoras en código, agentes, investigación profunda y trabajo con conocimiento; 280.000 millones de parámetros totales.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1024000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Coste 0. El proveedor puede registrar y usar las peticiones para mejorar el servicio; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "Propietaria",
+          "parametros": "280B"
+        },
+        {
+          "nombre": "liquid/lfm-3-1.7b:free",
+          "nombre_display": "LFM3 1.7B",
+          "descripcion": "Modelo compacto de 1,7B parámetros con contexto de 256K, entrenado para agentes, uso de herramientas y salidas estructuradas.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 262144,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Coste 0. El proveedor puede registrar y usar las peticiones para mejorar el servicio; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "LFM Open License v1.0",
+          "parametros": "1,7B"
+        },
+        {
+          "nombre": "particle-ai/particle-1:free",
+          "nombre_display": "Particle-1",
+          "descripcion": "Modelo agéntico de programación de Particle AI, ajustado sobre DeepSeek V4.1 Flash; acepta texto e imagen y contexto de 1M tokens.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1048576,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Coste 0. El proveedor puede registrar y usar las peticiones para mejorar el servicio; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": null,
+          "parametros": null
+        },
+        {
+          "nombre": "recursive/flint-v1.0:free",
+          "nombre_display": "Flint",
+          "descripcion": "Modelo abierto de mezcla de expertos de Recursive, con 2,5B parámetros activos de 40B, orientado a agentes de código.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 262144,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Coste 0. El proveedor puede registrar y usar las peticiones para mejorar el servicio; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "Pesos abiertos",
+          "parametros": "40B (2,5B activos)"
+        },
+        {
+          "nombre": "nvidia/nemotron-3.5-super-vl:free",
+          "nombre_display": "Nemotron 3.5 Super VL",
+          "descripcion": "Modelo multimodal abierto de NVIDIA con 12B parámetros activos de 120B; procesa texto, imágenes, documentos y vídeo.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1000000,
+          "modalidades": [
+            "texto",
+            "imagen",
+            "video"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Uso de prueba: no envíes datos personales o confidenciales. NVIDIA registra la sesión por seguridad y para mejorar sus productos.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "NVIDIA Open Model License",
+          "parametros": "120B (12B activos)"
+        },
+        {
+          "nombre": "nvidia/nemotron-3.5-lightning:free",
+          "nombre_display": "Nemotron 3.5 Lightning",
+          "descripcion": "Modelo abierto de mezcla de expertos de NVIDIA con 3B parámetros activos de 30B, para cargas agénticas de alto rendimiento.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1000000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Uso de prueba: no envíes datos personales o confidenciales. NVIDIA registra la sesión por seguridad y para mejorar sus productos.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "NVIDIA Open Model License",
+          "parametros": "30B (3B activos)"
+        },
+        {
+          "nombre": "nvidia/nemotron-3-ultra-550b-a55b:free",
+          "nombre_display": "Nemotron 3 Ultra",
+          "descripcion": "Modelo abierto de razonamiento y orquestación de NVIDIA con 55B parámetros activos de 550B y arquitectura híbrida Transformer-Mamba.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1000000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Uso de prueba: no envíes datos personales o confidenciales. NVIDIA registra la sesión por seguridad y para mejorar sus productos.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "NVIDIA Open Model License",
+          "parametros": "550B (55B activos)"
+        },
+        {
+          "nombre": "nvidia/nemotron-3-nano-omni-30b-a3b-reasoning:free",
+          "nombre_display": "Nemotron 3 Nano Omni",
+          "descripcion": "Modelo multimodal abierto de 30B con 3B parámetros activos; acepta texto, imagen, audio y vídeo para agentes de percepción.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto",
+            "imagen",
+            "audio",
+            "video"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Uso de prueba: no envíes datos personales o confidenciales. NVIDIA registra la sesión por seguridad y para mejorar sus productos.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "NVIDIA Open Model License",
+          "parametros": "30B (3B activos)"
+        },
+        {
+          "nombre": "openrouter/free",
+          "nombre_display": "OpenRouter Free Models Router",
+          "descripcion": "Router que elige al azar modelos gratuitos disponibles en OpenRouter y filtra los que no son realmente gratuitos.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 200000,
+          "modalidades": [
+            "texto",
+            "imagen"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "El modelo subyacente cambia en cada petición. Puede registrar y usar las peticiones; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": "Varias",
+          "parametros": "Variable"
+        },
+        {
+          "nombre": "reflection/beam-free",
+          "nombre_display": "Beam 1.0",
+          "descripcion": "Modelo de razonamiento de Reflection para código y flujos agénticos, combinando capacidad con baja latencia.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 1048576,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Coste 0. El proveedor puede registrar y usar las peticiones para mejorar el servicio; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": null,
+          "parametros": null
+        },
+        {
+          "nombre": "stealth/glyph-cluster",
+          "nombre_display": "Glyph Cluster",
+          "descripcion": "Modelo de razonamiento anónimo en acceso anticipado; el proveedor conserva las peticiones y respuestas.",
+          "tipo_acceso": "gratis",
+          "limite_peticiones_minuto": null,
+          "limite_tokens_minuto": null,
+          "limite_peticiones_dia": null,
+          "limite_tokens_dia": null,
+          "contexto_tokens": 256000,
+          "modalidades": [
+            "texto"
+          ],
+          "documentacion": "https://kilo.ai/docs/gateway/models-and-providers#free-models",
+          "notas": "Acceso anticipado. El proveedor retiene prompts y respuestas; no envíes datos confidenciales.",
+          "limite_extra": "200 peticiones/hora por IP (modelos gratuitos).",
+          "licencia": null,
+          "parametros": null
+        }
+      ]
     }
   ],
   "version": 2,
   "historial": [
+    {
+      "fecha": "2026-11-26T00:00:00Z",
+      "estado": "parcial",
+      "detalle": "Kilo Gateway añadido manualmente con 13 modelos gratuitos verificados el 2026-11-26."
+    },
     {
       "fecha": "2026-11-26T06:50:58Z",
       "estado": "parcial",

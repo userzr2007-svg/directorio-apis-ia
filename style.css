@@ -377,6 +377,7 @@ a {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  min-width: 0;
   padding: 17px;
   border: 1px solid var(--borde);
   border-radius: var(--radio);
@@ -687,7 +688,7 @@ footer a:hover {
   }
 
   .grid-modelos {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
   }
 
   .leyenda {

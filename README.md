@@ -15,8 +15,9 @@ Aplicación web estática que muestra modelos de IA con **API gratuita** o **pes
 | Cerebras | Free Trial con límites por modelo | Datos curados (revisión manual) |
 | Cloudflare Workers AI | Cupo gratuito de Neuronas | Datos curados (revisión manual) |
 | Cohere | Claves trial gratuitas con cuota mensual | Datos curados (revisión manual) |
+| Kilo Gateway | Modelos gratuitos con coste 0 | Datos curados (revisión manual) |
 
-Actualmente el directorio reúne **7 proveedores y más de 50 modelos**.
+Actualmente el directorio reúne **8 proveedores y más de 60 modelos**.
 
 ## Funciones de la página
 
@@ -131,7 +132,7 @@ Antes de actualizar, el workflow valida los datos y ejecuta las pruebas. Despué
 
 - **OpenRouter** se consulta siempre y se sincroniza automáticamente: añade modelos `:free` nuevos, actualiza contexto y modalidades, y retira los que dejaron de ser gratuitos.
 - **Google** actualiza nombres y contexto si existe el secreto `GOOGLE_API_KEY`. Los modelos nuevos no se añaden solos porque hay que comprobar si son gratuitos.
-- **Groq, Mistral, Cerebras, Cloudflare y Cohere** se mantienen curados manualmente porque sus límites no se exponen por API o requieren revisión.
+- **Groq, Mistral, Cerebras, Cloudflare, Cohere y Kilo Gateway** se mantienen curados manualmente porque sus límites no se exponen por API o requieren revisión.
 
 ### Protecciones del actualizador
 
