@@ -1,8 +1,8 @@
 window.DIRECTORIO_DATOS = {
-  "ultima_actualizacion": "2026-11-27T06:53:50Z",
-  "ultimo_intento": "2026-11-27T06:53:50Z",
+  "ultima_actualizacion": "2026-11-28T06:50:07Z",
+  "ultimo_intento": "2026-11-28T06:50:07Z",
   "estado": "parcial",
-  "detalle_estado": "OpenRouter: 12 modelos gratuitos verificados (0 añadidos, 0 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
+  "detalle_estado": "OpenRouter: 11 modelos gratuitos verificados (0 añadidos, 1 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados.",
   "proveedores": [
     {
       "id": "google",
@@ -249,25 +249,6 @@ window.DIRECTORIO_DATOS = {
       "notas": "Agregador con modelos de muchos laboratorios. Los modelos con sufijo :free son gratuitos con 20 peticiones/minuto y 50/día (1.000/día si compraste $10 o más en créditos).",
       "modelos": [
         {
-          "nombre": "inclusionai/ling-3.2-flash:free",
-          "nombre_display": "Ling 3.2 Flash",
-          "descripcion": "Modelo de razonamiento híbrido de inclusionAI; acepta texto e imagen (hasta 200 imágenes por petición) y contexto de 1M tokens.",
-          "tipo_acceso": "gratis",
-          "limite_peticiones_minuto": 20,
-          "limite_tokens_minuto": null,
-          "limite_peticiones_dia": 50,
-          "limite_tokens_dia": null,
-          "contexto_tokens": 1048576,
-          "modalidades": [
-            "texto",
-            "imagen"
-          ],
-          "documentacion": "https://openrouter.ai/inclusionai/ling-3.2-flash:free",
-          "notas": null,
-          "licencia": null,
-          "parametros": null
-        },
-        {
           "nombre": "baidu/ernie-5.5-flash-preview:free",
           "nombre_display": "ERNIE 5.5 Flash Preview",
           "descripcion": "Modelo insignia de Baidu con mejoras en código, agentes, investigación profunda y trabajo con conocimiento.",
@@ -477,7 +458,7 @@ window.DIRECTORIO_DATOS = {
           "parametros": null
         }
       ],
-      "verificado": "2026-11-27",
+      "verificado": "2026-11-28",
       "actualizacion": "automatica"
     },
     {
@@ -1295,6 +1276,11 @@ window.DIRECTORIO_DATOS = {
   ],
   "version": 2,
   "historial": [
+    {
+      "fecha": "2026-11-28T06:50:07Z",
+      "estado": "parcial",
+      "detalle": "OpenRouter: 11 modelos gratuitos verificados (0 añadidos, 1 retirados, 0 actualizados). Google: sin API key (GOOGLE_API_KEY); datos conservados."
+    },
     {
       "fecha": "2026-11-27T06:53:50Z",
       "estado": "parcial",
